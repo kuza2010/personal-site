@@ -1,0 +1,15 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.blog {
+    h1, h2, h3, h4, h5 {
+        a {
+            @apply hover:text-inherit dark:hover:text-inherit no-underline
+        }
+    }
+
+    a {
+        @apply hover:text-alligator-500 dark:hover:text-alligator-400
+    }
+}

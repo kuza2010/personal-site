@@ -1,0 +1,16 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+    :root {
+        --color-brand: #227722;
+        overflow-y: auto;
+        scrollbar-gutter: stable;
+    }
+
+    body {
+        @apply bg-white dark:bg-gray-900;
+    }
+
+}
