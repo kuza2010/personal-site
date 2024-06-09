@@ -8,7 +8,8 @@ export const useRecentBlogPost = async () => {
     console.log('call useRecentBlogPost')
 
     const {data} = await useAsyncData('key-content', () => {
-        return queryContent('/blog')
+            return queryContent('/blog')
+                .sort({created: -1})
                 .only(KEYS_TO_FETCH)
                 .find()
         }
