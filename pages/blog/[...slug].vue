@@ -19,13 +19,16 @@
     <p class="font-sans text-xs mt-0 mb-1">
       Last update: {{ filters.formatDate(data.lastModified) }}
     </p>
-    <ContentDoc class="text-justify" />
+    <ContentRenderer
+      :value="data"
+      class="text-justify"
+    />
   </div>
 </template>
 
 <script setup>
 
-import {useAppConfig, useRouter} from '#app';
+import {useAppConfig, useRouter} from '#imports';
 import {usePost} from '~/composables/usePost.ts';
 
 const route = useRouter()

@@ -29,12 +29,11 @@
 <script setup lang="ts">
 import { ExternalLink } from '~/utils/external-link';
 import InPlaceLink from '~/components/link/InPlaceLink.vue';
-import { useHead } from 'unhead';
+import { useHead } from '#imports';
 
 const sovcombankTechLink = ExternalLink.SOVCOMBANK_TECH_WEBSITE;
 
 useHead({
-  title: null,
   meta: [
     {name: 'description', content: 'Artem Danilin\'s personal site'}
   ],
@@ -43,6 +42,7 @@ useHead({
 </script>
 
 <style lang="css">
+@reference '../assets/blog.css';
 
 .main-cover-image {
   @apply my-3.5 w-full h-80 sm:h-96 rounded-xl sm:rounded-2xl bg-center bg-cover bg-cover-image;

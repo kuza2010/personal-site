@@ -1,11 +1,13 @@
 <template>
-  <NuxtLayout>
-    <NuxtPage />
-  </NuxtLayout>
+  <UApp>
+    <NuxtLayout>
+      <NuxtPage />
+    </NuxtLayout>
+  </UApp>
 </template>
 
 <script setup lang="ts">
-import { useHead } from 'unhead';
+import {useHead} from '#imports';
 
 useHead({
   // or as a function

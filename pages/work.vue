@@ -85,7 +85,8 @@
 </template>
 
 <script setup>
-import {useHead} from 'unhead';
+
+import {useHead} from '#imports';
 
 useHead({
   title: 'Work',
