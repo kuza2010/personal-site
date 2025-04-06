@@ -1,23 +1,13 @@
-import { useAsyncData } from '#app';
-import { queryContent } from '#build/imports';
-
-
-const KEYS_TO_FETCH: string[] = ['_path', 'title', 'created', 'lastModified', 'description', 'languageTags']
+import {useAsyncData} from '#app';
+import {queryCollection} from '#imports';
 
 export const useRecentBlogPost = async () => {
-    console.log('call useRecentBlogPost')
-
     const {data} = await useAsyncData('key-content', () => {
-            return queryContent('/blog')
-                .sort({created: -1})
-                .only(KEYS_TO_FETCH)
-                .find()
-        }
-    )
+        return queryCollection('blog')
+            .select('path', 'title', 'created', 'lastModified', 'description', 'languageTags')
+            .order('lastModified', 'DESC')
+            .all()
+    })
 
-    if (data.value === null) {
-        return null
-    } else {
-        return data.value
-    }
+    return data.value
 }

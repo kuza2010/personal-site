@@ -6,8 +6,8 @@
     <div class="my-6 flex flex-col gap-6">
       <NuxtLink
         v-for="item in blogPost"
-        :key="item._path"
-        :to="item._path"
+        :key="item.path"
+        :to="item.path"
       >
         <UCard class="cursor-pointer">
           <template #header>
@@ -42,7 +42,7 @@
 
 <script setup>
 
-import {useHead} from 'unhead';
+import {useHead} from '#imports';
 import {useAppConfig} from '#app';
 import {useRecentBlogPost} from '~/composables/useRecentBlogPost.ts';
 

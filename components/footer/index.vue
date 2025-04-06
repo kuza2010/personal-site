@@ -27,5 +27,9 @@ function openGithub() {
       text="Linkedin"
       @on-click="openLinkedin"
     />
+    <FooterButton
+      text="Github"
+      @on-click="openGithub"
+    />
   </div>
 </template>
