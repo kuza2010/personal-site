@@ -23,16 +23,25 @@
       :value="data"
       class="text-justify"
     />
+    Find a mistake:
+    <ULink
+      :to="githubLink"
+      :external="true"
+    >
+      change this page on github!
+    </ULink>
   </div>
 </template>
 
 <script setup>
 
-import {useAppConfig, useRouter} from '#imports';
+import {computed} from 'vue';
+import {useAppConfig, useGithubLink, useRouter} from '#imports';
 import {usePost} from '~/composables/usePost.ts';
 
 const route = useRouter()
 const {filters} = useAppConfig();
 const data = await usePost(route.currentRoute.value.fullPath)
+const githubLink = useGithubLink(data.value.path, data.value.extension)
 
 </script>
