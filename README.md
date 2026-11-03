@@ -4,16 +4,26 @@ Personal website and blog. Built with [Nuxt 3](https://nuxt.com), [Nuxt Content]
 
 ## Requirements
 
-- Node.js 18.12+, 20.9+ or 22+ (Nuxt 3.16 requirement)
+- Node.js 22 (`Jod` LTS) — pinned in `.nvmrc` and enforced by `engines` in `package.json`
+- [nvm](https://github.com/nvm-sh/nvm) for version management
 - npm (the only supported package manager here — `package-lock.json` is the lockfile)
 
 ## Setup
 
 ```bash
+nvm install   # reads .nvmrc, installs Node 22
+nvm use       # switches this shell to Node 22
 npm install
 ```
 
 `npm install` also runs `nuxt prepare`, which generates the `.nuxt` types.
+
+Switching Node versions after `node_modules` already exists requires a reinstall, because native modules (`better-sqlite3`) are compiled against the running Node's ABI:
+
+```bash
+rm -rf node_modules .nuxt
+npm ci
+```
 
 ## Development
 
