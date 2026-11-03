@@ -1,75 +1,79 @@
-# Nuxt 3 Minimal Starter
+# Artem Danilin — personal site
 
-Look at the [Nuxt 3 documentation](https://nuxt.com/docs/getting-started/introduction) to learn more.
+Personal website and blog. Built with [Nuxt 3](https://nuxt.com), [Nuxt Content](https://content.nuxt.com) and [Nuxt UI](https://ui.nuxt.com).
+
+## Requirements
+
+- Node.js 18.12+, 20.9+ or 22+ (Nuxt 3.16 requirement)
+- npm (the only supported package manager here — `package-lock.json` is the lockfile)
 
 ## Setup
 
-Make sure to install the dependencies:
-
 ```bash
-# npm
 npm install
-
-# pnpm
-pnpm install
-
-# yarn
-yarn install
-
-# bun
-bun install
 ```
 
-## Development Server
+`npm install` also runs `nuxt prepare`, which generates the `.nuxt` types.
 
-Start the development server on `http://localhost:3000`:
+## Development
 
 ```bash
-# npm
-npm run dev
-
-# pnpm
-pnpm run dev
-
-# yarn
-yarn dev
-
-# bun
-bun run dev
+npm run start:dev
 ```
 
-## Production
+The dev server runs on `http://localhost:3000`, opens a browser and binds to the host. There is no `dev` script.
 
-Build the application for production:
+> Nuxt auto-imports are disabled (`imports.autoImport: false` in `nuxt.config.ts`), so components, composables and APIs must be imported explicitly in every file.
 
-```bash
-# npm
-npm run build
+## Scripts
 
-# pnpm
-pnpm run build
+| Command                 | Description                                      |
+| ----------------------- | ------------------------------------------------ |
+| `npm run start:dev`     | Start the dev server (opens browser, binds host) |
+| `npm run build`         | Build for production                             |
+| `npm run start:preview` | Preview the production build locally             |
+| `npm run generate`      | Generate a static site into `.output/public`     |
+| `npm run lint`          | Lint with ESLint                                 |
+| `npm run lint:fix`      | Lint and auto-fix                                |
+| `npm run clean`         | Remove `.nuxt` and the Vite cache                |
 
-# yarn
-yarn build
+## Writing a post
 
-# bun
-bun run build
+Posts are Markdown files in `content/blog/`. The `blog` collection validates frontmatter in `content.config.ts`, and every field is required:
+
+```yaml
+---
+title: Object Mother
+description: How to simplify the creation of test objects
+img: /blog/object-mother/object-mother.webp
+alt: java testing pattern
+languageTags: [java, testing, pattern]
+created: 2026-01-05T15:20:00
+lastModified: 2026-01-05T15:20:00
+---
 ```
 
-Locally preview production build:
+Put post images in `public/blog/<slug>/` and reference them as `/blog/<slug>/<file>`.
 
-```bash
-# npm
-npm run preview
+The content index is cached in `.data/content/contents.sqlite` (gitignored). After changing a collection name, source glob or schema in `content.config.ts`, delete `.data` and restart the dev server.
 
-# pnpm
-pnpm run preview
+## Project structure
 
-# yarn
-yarn preview
-
-# bun
-bun run preview
+```
+assets/       Global CSS (Tailwind v4 entry points)
+components/   Vue components (auto-import disabled)
+composables/  Data fetching helpers for Nuxt Content
+content/blog/ Markdown posts
+layouts/      Page layouts
+pages/        Routes: /, /blog, /blog/[...slug], /work
+public/       Static assets (images, favicon)
+server/       Reserved for Nitro server routes
+utils/        Small pure helpers
 ```
 
-Check out the [deployment documentation](https://nuxt.com/docs/getting-started/deployment) for more information.
+## Deployment
+
+There is no deploy config in the repo. Two options:
+
+- **Static:** `npm run generate`, then serve `.output/public` from any static host.
+- **Node server:** `npm run build`, then `npm run start:preview` / `node .output/server/index.mjs`.
