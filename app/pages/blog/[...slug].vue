@@ -35,7 +35,6 @@
 
 <script setup>
 
-import {computed} from 'vue';
 import {useAppConfig, useGithubLink, useRouter} from '#imports';
 import {usePost} from '~/composables/usePost.ts';
 

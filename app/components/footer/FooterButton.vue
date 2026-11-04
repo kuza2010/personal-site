@@ -2,13 +2,13 @@
 
 defineEmits(['onClick'])
 
-defineProps<{ text: String }>()
+defineProps<{ text: string }>()
 
 </script>
 
 <template>
   <UButton
-    color="white"
+    color="neutral"
     variant="link"
     icon="i-heroicons-command-line"
     class="hover:text-alligator-600 dark:hover:text-alligator-700 p-0 hover:cursor-pointer hover:no-underline"

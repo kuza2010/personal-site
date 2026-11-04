@@ -1,7 +1,9 @@
 @import 'tailwindcss';
 @import '@nuxt/ui';
+@import './theme.css';
 
-@config '../tailwind.config.ts';
+@config '../../tailwind.config.ts';
+@source '../../content/**/*';
 
 @layer base {
     :root {

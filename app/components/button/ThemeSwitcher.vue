@@ -17,7 +17,7 @@ const isDark = computed({
 <template>
   <ClientOnly>
     <UButton
-      color="gray"
+      color="neutral"
       variant="ghost"
       aria-label="Theme"
       class="cursor-pointer hover:bg-transparent hover:dark:bg-transparent"

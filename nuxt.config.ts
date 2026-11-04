@@ -13,7 +13,12 @@ export default defineNuxtConfig({
         '~/assets/blog.css',
         '~/assets/website.css',
     ],
-    modules: ['@nuxt/ui', '@nuxt/content'],
+    modules: ['@nuxt/ui', '@nuxt/content', '@nuxt/eslint'],
+    icon: {
+        clientBundle: {
+            scan: true
+        }
+    },
     colorMode: {
         fallback: 'light',
         preference: 'system',

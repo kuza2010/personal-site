@@ -1,0 +1,19 @@
+/*
+  Brand palette ("alligator", generated from https://uicolors.app/create).
+  Nuxt UI resolves `ui.colors.primary: 'alligator'` to `var(--color-alligator-*)`,
+  so these values must be emitted as CSS variables at build time. `@theme static`
+  forces every shade into the output even when only Nuxt UI references it at runtime.
+*/
+@theme static {
+    --color-alligator-50: #f1fcf1;
+    --color-alligator-100: #e1f8e0;
+    --color-alligator-200: #c3f0c2;
+    --color-alligator-300: #93e392;
+    --color-alligator-400: #5ccd5b;
+    --color-alligator-500: #34b334;
+    --color-alligator-600: #279326;
+    --color-alligator-700: #227722;
+    --color-alligator-800: #1f5c1f;
+    --color-alligator-900: #1b4c1c;
+    --color-alligator-950: #0a290b;
+}
