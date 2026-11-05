@@ -5,10 +5,11 @@ import { computed } from 'vue';
 const props = defineProps<{
   to: string,
   displayText: string,
+  openInNewTab?: boolean,
 }>()
 
 const target = computed(() => {
-  return isExternalLink(props.to) ? '_blank' : undefined
+  return (isExternalLink(props.to) || props.openInNewTab) ? '_blank' : undefined
 });
 
 </script>

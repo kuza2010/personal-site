@@ -7,6 +7,16 @@
       Over 8 years my mission is to create digital solutions for different kind of projects like startups, large
       government and product oriented companies. Here you can find a summary of my work so far.
     </p>
+    <p class="mt-3">
+      You can read or
+      <InPlaceLink
+        class="font-bold"
+        to="/CV_Danilin_Artem.pdf"
+        display-text="download"
+        open-in-new-tab
+      />
+      my resume.
+    </p>
 
     <hr class="h-px my-8 bg-gray-200 border-0 dark:bg-gray-700">
     <ResumeItem>
@@ -23,18 +33,25 @@
       <template #job-description-detailed>
         Achievements:<br>
         <ul class="list-inside list-disc">
-          <li>modernized a legacy Java EE codebase (JBoss, JSF) while maintaining and improving business-critical functionality</li>
+          <li>modernized a legacy Java EE codebase (JBoss, JSF) while maintaining and improving business-critical
+            functionality
+          </li>
           <li>
-            led the development of a reactive, high-load service for a new insurance product, from initial design through
+            led the development of a reactive, high-load service for a new insurance product, from initial design
+            through
             production launch; the product attracted more than RUB 100 million in pension assets during its first year
           </li>
-          <li>develop and maintain internal tools that automate the release process, reducing manual work for team leads and shortening the overall release cycle</li>
+          <li>develop and maintain internal tools that automate the release process, reducing manual work for team leads
+            and shortening the overall release cycle
+          </li>
           <li>
             developed solutions to optimize business processes in the insurance division's internal document management
             system, automating document workflows with AI tools and eliminating up to one month of manual work per year
             across the department
           </li>
-          <li>participated in the company's mentoring program, helping newcomers onboard and supporting the professional growth and retention of middle-level engineers</li>
+          <li>participated in the company's mentoring program, helping newcomers onboard and supporting the professional
+            growth and retention of middle-level engineers
+          </li>
         </ul>
       </template>
       <template #job-technologies>
@@ -58,10 +75,18 @@
       <template #job-description-detailed>
         Achievements:<br>
         <ul class="list-inside list-disc">
-          <li>worked across multiple projects, taking ownership of complex core application logic and backend functionality</li>
-          <li>led backend development from the ground up on several projects, taking them from initial scaffolding to successful production launches</li>
-          <li>mentored junior developers in the company's internship program, delivering technical training and guiding interns</li>
-          <li>introduced and promoted code quality practices, improving maintainability, consistency and overall development standards across projects</li>
+          <li>worked across multiple projects, taking ownership of complex core application logic and backend
+            functionality
+          </li>
+          <li>led backend development from the ground up on several projects, taking them from initial scaffolding to
+            successful production launches
+          </li>
+          <li>mentored junior developers in the company's internship program, delivering technical training and guiding
+            interns
+          </li>
+          <li>introduced and promoted code quality practices, improving maintainability, consistency and overall
+            development standards across projects
+          </li>
         </ul>
       </template>
       <template #job-technologies>
@@ -123,6 +148,7 @@
 </template>
 
 <script setup>
+import InPlaceLink from '~/components/link/InPlaceLink.vue';
 import {useHead} from '#imports';
 
 useHead({
