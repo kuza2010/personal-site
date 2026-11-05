@@ -1,13 +1,13 @@
 <template>
   <div>
     <p class="text-lg tracking-tight font-semibold font-mono underline decoration-2 decoration-brand">
-      <slot name="job-title" />
+      <slot name="job-title"/>
     </p>
     <p class="tracking-tight text-sm">
-      <slot name="job-summary" />
+      <slot name="job-summary"/>
     </p>
     <p class="pt-3">
-      <slot name="job-description" />
+      <slot name="job-description"/>
     </p>
     <div
       v-if="slots['job-description-detailed']"
@@ -21,7 +21,14 @@
         Show more
       </span>
       <div v-show="isDetailsVisible">
-        <slot name="job-description-detailed" />
+        <slot name="job-description-detailed"/>
+        <p
+          v-if="slots['job-technologies']"
+          class="pt-2 text-sm text-gray-600 dark:text-gray-300"
+        >
+          <span class="font-medium">Used languages and technologies:</span>
+          <slot name="job-technologies"/>
+        </p>
       </div>
       <span
         v-show="isDetailsVisible"
@@ -33,8 +40,9 @@
     </div>
   </div>
 </template>
+
 <script setup lang="ts">
-import { ref, useSlots } from 'vue'
+import {ref, useSlots} from 'vue'
 
 const slots = useSlots()
 
