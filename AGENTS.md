@@ -6,25 +6,31 @@ Non-obvious rules and landmines for this repo. Commands, post authoring and the 
 
 `README.md` is the source of truth. Two things that trip agents up: there is **no `dev` script** (use `npm run start:dev`) and **no test suite** (don't run `npm test`).
 
+Linting uses ESLint 10 flat config (`eslint.config.mjs`), which imports the generated `.nuxt/eslint.config.mjs`. Run `npm run prepare` after changing Nuxt modules or the lint config will fail to load.
+
 ## Imports: auto-import is disabled
 
-`nuxt.config.ts` sets `imports.autoImport: false`, so nothing is magically in scope:
+`nuxt.config.ts` sets `imports.autoImport: false`, so no composable, util or Nuxt API is magically in scope:
 
 - Nuxt APIs go through `#imports` (occasionally `#app` / `#components`); Vue APIs through `vue`.
-- Components must be imported too: `import InPlaceLink from '~/components/link/InPlaceLink.vue'`.
 - Local modules are imported with their extension, matching existing code: `import {usePost} from '~/composables/usePost.ts'`.
+- Scanned composables/utils are still re-exported from `#imports` (for example `useGithubLink`), so that is the preferred way to import them.
+- Components under `app/components/` **are** auto-registered by filename (`<Navbar />`, `<ResumeItem />`); explicit imports like `~/components/link/InPlaceLink.vue` also work.
 
 A missing import fails at build/runtime, not at lint time.
 
 ## Styling
 
-- Tailwind v4 with a v3-style `tailwind.config.ts`. It is only active because `assets/blog.css` / `assets/website.css` contain `@config '../tailwind.config.ts'`.
-- `@apply` inside an SFC `<style>` block requires `@reference '../assets/blog.css';` at the top of that block (see `pages/index.vue`).
-- Brand color comes from the `alligator` palette / `--color-brand`; use those instead of raw Tailwind greens.
-- `@nuxt/ui` is v3, but `app.config.ts` still uses v2 keys (`ui.gray`, `ui.primary`). v3 reads `appConfig.ui.colors.{primary,neutral}`, so those keys are ignored — don't assume changing them re-themes the UI.
+- Tailwind v4 with a v3-style `tailwind.config.ts`. It is only active because `app/assets/blog.css` / `app/assets/website.css` contain `@config '../../tailwind.config.ts'` (paths are relative to the CSS file).
+- The same CSS files contain `@source '../../content/**/*'` so Tailwind classes used inside Markdown are still generated after the Nuxt 4 `app/` move.
+- `@apply` inside an SFC `<style>` block requires `@reference '../assets/blog.css';` at the top of that block (see `app/pages/index.vue`).
+- Brand color comes from the `alligator` palette / `--color-brand`; use those instead of raw Tailwind greens. The palette lives in `app/assets/theme.css` as a `@theme static` block so Nuxt UI can resolve it at runtime.
+- `@nuxt/ui` is v4. `app.config.ts` configures semantic colors via `appConfig.ui.colors` (currently `primary: 'alligator'`). Custom colors must exist in the Tailwind theme, so the `alligator` palette in `app/assets/theme.css` is what makes the brand color resolve. Don't use old v2 keys (`ui.gray`, `ui.primary`).
 
 ## Landmines
 
 - Dates are rendered via `useAppConfig().filters.formatDate` (backed by `moment` in `app.config.ts`), not by importing `moment` in components.
-- Navbar links must start with `/`. `normalizeLink` in `utils/normalize-link.ts` returns the literal string `'/ + foo'` for links without a leading slash (template-literal bug), so `link="blog"` produces a broken href.
-- The "edit on GitHub" URL in `composables/useGithubLink.ts` hardcodes `kuza2010/personal-site`; update it if the repo moves.
+- Navbar links must start with `/`. `normalizeLink` in `app/utils/normalize-link.ts` returns the literal string `'/ + foo'` for links without a leading slash (template-literal bug), so `link="blog"` produces a broken href.
+- The "edit on GitHub" URL in `app/composables/useGithubLink.ts` hardcodes `kuza2010/personal-site`; update it if the repo moves.
+- `content.config.ts` stays at the project root even though app code lives in `app/`; Nuxt Content resolves it from `rootDir`, not `srcDir`.
+- `better-sqlite3` is a native module used by Nuxt Content. Switching Node versions after installing requires `rm -rf node_modules .nuxt && npm install`.

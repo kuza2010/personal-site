@@ -4,8 +4,8 @@ export enum ExternalLink {
     GITHUB = '',
 }
 
-export function isExternalLink(link: String): boolean {
-    let res = (<any>Object).values(ExternalLink).includes(link, 0);
+export function isExternalLink(link: string): boolean {
+    let res = (Object.values(ExternalLink) as string[]).includes(link);
 
     if (!res) {
         res = link.startsWith('http://') || link.startsWith('https://')

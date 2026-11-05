@@ -1,7 +1,7 @@
 const SLASH = '/';
 
-export function normalizeLink(link: String): String {
-    const trim: String = link.trim()
+export function normalizeLink(link: string): string {
+    const trim: string = link.trim()
 
     if (trim.length === 0) {
         return SLASH;
@@ -14,6 +14,6 @@ export function normalizeLink(link: String): String {
     return `${SLASH} + ${link}`;
 }
 
-export function normalizeLinks(links: Array<String>): Array<String> {
+export function normalizeLinks(links: Array<string>): Array<string> {
     return links.map(normalizeLink)
 }

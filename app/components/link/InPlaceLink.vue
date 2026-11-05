@@ -3,8 +3,8 @@ import { isExternalLink } from '~/utils/external-link';
 import { computed } from 'vue';
 
 const props = defineProps<{
-  to: String,
-  displayText: String,
+  to: string,
+  displayText: string,
 }>()
 
 const target = computed(() => {

@@ -5,9 +5,9 @@ import { NuxtLink } from '#components';
 import { normalizeLink } from '~/utils/normalize-link';
 
 const props = defineProps<{
-  link: String,
-  class?: String
-  linkText: String,
+  link: string,
+  class?: string
+  linkText: string,
 }>()
 
 const normalizedLink = computed(() => {
