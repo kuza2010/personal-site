@@ -11,7 +11,7 @@
     </p>
 
     <UCollapsible
-      v-if="slots['job-description-detailed']"
+      v-if="slots['job-achievements'] || slots['job-description-detailed']"
       :unmount-on-hide="false"
       class="flex flex-col pt-1.5"
       :ui="{ content: 'order-1 pb-1.5 motion-reduce:animate-none!' }"
@@ -30,6 +30,12 @@
       </template>
 
       <template #content>
+        <div v-if="slots['job-achievements']">
+          <p>Achievements:</p>
+          <ul class="list-disc pl-5">
+            <slot name="job-achievements"/>
+          </ul>
+        </div>
         <slot name="job-description-detailed"/>
         <p
           v-if="slots['job-technologies']"
