@@ -18,7 +18,7 @@
       my resume.
     </p>
 
-    <hr class="h-px my-8 bg-gray-200 border-0 dark:bg-gray-700">
+    <hr class="h-px my-4 bg-gray-200 border-0 dark:bg-gray-700">
     <ResumeItem>
       <template #job-title>
         Sovcombank technologies
@@ -60,7 +60,7 @@
       </template>
     </ResumeItem>
 
-    <hr class="h-px my-8 bg-gray-200 border-0 dark:bg-gray-700">
+    <hr class="h-px my-4 bg-gray-200 border-0 dark:bg-gray-700">
     <ResumeItem>
       <template #job-title>
         Digital league
@@ -94,7 +94,7 @@
       </template>
     </ResumeItem>
 
-    <hr class="h-px my-8 bg-gray-200 border-0 dark:bg-gray-700">
+    <hr class="h-px my-4 bg-gray-200 border-0 dark:bg-gray-700">
     <ResumeItem>
       <template #job-title>
         Orion Innovation (ex MERA)
@@ -135,7 +135,7 @@
       </template>
     </ResumeItem>
 
-    <hr class="h-px my-8 bg-gray-200 border-0 dark:bg-gray-700">
+    <hr class="h-px my-4 bg-gray-200 border-0 dark:bg-gray-700">
     <ResumeItem>
       <template #job-title>
         SI-ART LLC
