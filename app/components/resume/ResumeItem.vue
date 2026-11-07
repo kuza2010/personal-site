@@ -9,18 +9,27 @@
     <p class="pt-3">
       <slot name="job-description"/>
     </p>
-    <div
+
+    <UCollapsible
       v-if="slots['job-description-detailed']"
-      class="pt-1.5"
+      :unmount-on-hide="false"
+      class="flex flex-col pt-1.5"
+      :ui="{ content: 'order-1 pb-1.5 motion-reduce:animate-none!' }"
     >
-      <span
-        v-show="!isDetailsVisible"
-        class="italic cursor-pointer font-light text-gray-600 dark:text-gray-300 float-end pr-3 text-sm"
-        @click="switchJobDetailsVisibility"
-      >
-        Show more
-      </span>
-      <div v-show="isDetailsVisible">
+      <template #default="{ open }">
+        <UButton
+          variant="link"
+          color="neutral"
+          class="group order-2 self-end cursor-pointer p-0 pr-3 italic font-light text-sm text-gray-600 dark:text-gray-300 hover:text-alligator-600 dark:hover:text-alligator-400 focus-visible:outline-primary/25"
+          :label="open ? 'Show less' : 'Show more'"
+          trailing-icon="i-heroicons-chevron-down-20-solid"
+          :ui="{
+            trailingIcon: 'size-4 transition-transform duration-200 group-data-[state=open]:rotate-180 motion-reduce:transition-none!',
+          }"
+        />
+      </template>
+
+      <template #content>
         <slot name="job-description-detailed"/>
         <p
           v-if="slots['job-technologies']"
@@ -29,27 +38,13 @@
           <span class="font-medium">Used languages and technologies:</span>
           <slot name="job-technologies"/>
         </p>
-      </div>
-      <span
-        v-show="isDetailsVisible"
-        class="italic cursor-pointer font-light text-gray-600 dark:text-gray-300 float-end pr-3 text-sm pt-1"
-        @click="switchJobDetailsVisibility"
-      >
-        Show less
-      </span>
-    </div>
+      </template>
+    </UCollapsible>
   </div>
 </template>
 
 <script setup lang="ts">
-import {ref, useSlots} from 'vue'
+import {useSlots} from 'vue'
 
 const slots = useSlots()
-
-const isDetailsVisible = ref(false);
-
-const switchJobDetailsVisibility = () => {
-  isDetailsVisible.value = !isDetailsVisible.value;
-}
-
 </script>
