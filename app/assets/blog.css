@@ -33,4 +33,15 @@
     a {
         @apply hover:text-alligator-500 dark:hover:text-alligator-400
     }
+
+    /*
+      @tailwindcss/typography sets --tw-prose-pre-code to gray-200 in the light
+      theme because it assumes a dark pre background. Nuxt UI's ProsePre
+      overrides the background with bg-muted (gray-50), so plain code text ends
+      up almost invisible. --ui-text is a semantic Nuxt UI token that already
+      adapts to light/dark mode.
+    */
+    pre {
+        color: var(--ui-text);
+    }
 }
