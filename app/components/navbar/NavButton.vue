@@ -20,7 +20,7 @@ const normalizedLink = computed(() => {
   <NuxtLink
     :to="normalizedLink"
     :class="props.class"
-    class="hover:text-alligator-500 dark:hover:text-alligator-400"
+    class="hover:text-primary"
   >
     {{ linkText }}
   </NuxtLink>
