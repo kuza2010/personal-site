@@ -8,8 +8,12 @@
         v-for="item in blogPost"
         :key="item.path"
         :to="item.path"
+        class="group block"
       >
-        <UCard class="cursor-pointer">
+        <UCard
+          class="cursor-pointer transition-[translate,box-shadow] duration-150 ease-out hover:-translate-y-0.5
+          hover:shadow-md hover:ring-primary/40 group-focus-visible:shadow-md group-focus-visible:ring-primary/40"
+        >
           <template #header>
             {{ item.title }}
           </template>

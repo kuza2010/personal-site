@@ -31,7 +31,7 @@
     }
 
     a {
-        @apply hover:text-alligator-500 dark:hover:text-alligator-400
+        @apply hover:text-primary
     }
 
     /*

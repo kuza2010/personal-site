@@ -19,7 +19,7 @@ const target = computed(() => {
     :to="props.to"
     :target="target"
     active-class="text-primary"
-    inactive-class="text-gray-500 dark:text-gray-400 hover:text-alligator-500 dark:hover:text-alligator-700"
+    inactive-class="text-gray-500 dark:text-gray-400 hover:text-primary"
   >
     {{ props.displayText }}
   </ULink>
