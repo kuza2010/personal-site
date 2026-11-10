@@ -20,7 +20,7 @@
         <UButton
           variant="link"
           color="neutral"
-          class="group order-2 self-end cursor-pointer p-0 pr-3 italic font-light text-sm text-gray-600 dark:text-gray-300 hover:text-primary focus-visible:outline-primary/25"
+          class="group order-2 self-end cursor-pointer p-0 pr-3 italic font-light text-sm text-gray-600 dark:text-gray-300 hover:text-primary"
           :label="open ? 'Show less' : 'Show more'"
           trailing-icon="i-heroicons-chevron-down-20-solid"
           :ui="{

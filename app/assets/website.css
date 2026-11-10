@@ -16,4 +16,30 @@
         @apply bg-white dark:bg-gray-900;
     }
 
+    /*
+      Nuxt UI ships no focus ring colour, so browsers paint their own
+      (black-ish) outline on links/buttons. Use the brand colour instead.
+      Nuxt UI components that define their own focus utilities
+      (e.g. `outline-primary/25 focus-visible:outline-3`) still win,
+      because Tailwind utilities live in a later cascade layer.
+      The neutral variant is the exception and is fixed in the utilities
+      layer at the bottom of this file.
+    */
+    :is(a, button, summary, [role='button'], [role='tab'], [role='menuitem'], [tabindex]:not([tabindex='-1'])):focus-visible {
+        outline: 2px solid var(--ui-primary);
+        outline-offset: 2px;
+    }
+}
+
+/*
+  Nuxt UI's `color="neutral"` controls (theme switcher, footer links) hardcode
+  `outline-inverted/25` - a barely visible grey ring - in the utilities layer,
+  which always beats the base rule above. Recolour them with the brand colour.
+  It has to live in the utilities layer too, hence a higher specificity.
+*/
+@layer utilities {
+    :is(a, button)[class~='outline-inverted/25']:focus-visible {
+        outline: 2px solid var(--ui-primary);
+        outline-offset: 2px;
+    }
 }
