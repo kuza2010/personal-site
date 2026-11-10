@@ -8,7 +8,7 @@
         v-for="item in blogPost"
         :key="item.path"
         :to="item.path"
-        class="group block"
+        class="group block rounded-lg"
       >
         <UCard
           class="cursor-pointer transition-[translate,box-shadow] duration-150 ease-out hover:-translate-y-0.5

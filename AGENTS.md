@@ -26,6 +26,7 @@ A missing import fails at build/runtime, not at lint time.
 - `@apply` inside an SFC `<style>` block requires `@reference '../assets/blog.css';` at the top of that block (see `app/pages/index.vue`).
 - Interactive brand accents use Nuxt UI semantic utilities (`text-primary`, `ring-primary`, `outline-primary`), not raw `alligator-*` classes. `primary` resolves to the `alligator` palette configured in `app.config.ts`, and switches shade automatically (500 light / 400 dark). The raw palette in `app/assets/theme.css` is the definition, not the default reference; `--color-brand` is reserved for fixed decorative accents such as underlines and `hr`.
 - `@nuxt/ui` is v4. `app.config.ts` configures semantic colors via `appConfig.ui.colors` (currently `primary: 'alligator'`). Custom colors must exist in the Tailwind theme, so the `alligator` palette in `app/assets/theme.css` is what makes the brand color resolve. Don't use old v2 keys (`ui.gray`, `ui.primary`).
+- Keyboard focus lives in `app/assets/website.css`: a base `:focus-visible` rule (2px `var(--ui-primary)`) plus a utilities-layer override for Nuxt UI's `color="neutral"` controls, which hardcode `outline-inverted/25` and otherwise beat the base layer. Don't re-add per-component `focus-visible:outline-*` unless you intentionally override it — on neutral buttons such a class loses the cascade.
 
 ## Landmines
 
