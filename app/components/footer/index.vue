@@ -1,35 +1,28 @@
 <script setup lang="ts">
-import FooterButton from '~/components/footer/FooterButton.vue';
+import { computed } from 'vue';
 import { useRuntimeConfig } from '#app';
+import FooterButton from '~/components/footer/FooterButton.vue';
 
 const runtimeConfig = useRuntimeConfig();
 
-function giveFeedbackCallback() {
-  window.open('mailto:' + runtimeConfig.public.email + '?subject=Personal%20Site|Feedback');
-}
-function openLinkedin() {
-  window.open(runtimeConfig.public.linkedIn);
-}
-
-function openGithub() {
-  window.open(runtimeConfig.public.github);
-}
-
+const feedbackLink = computed(() => {
+  return `mailto:${runtimeConfig.public.email}?subject=${encodeURIComponent('Personal Site | Feedback')}`;
+});
 </script>
 
 <template>
   <div class="flex space-x-4">
     <FooterButton
       text="Give feedback"
-      @on-click="giveFeedbackCallback"
+      :to="feedbackLink"
     />
     <FooterButton
       text="Linkedin"
-      @on-click="openLinkedin"
+      :to="runtimeConfig.public.linkedIn"
     />
     <FooterButton
       text="Github"
-      @on-click="openGithub"
+      :to="runtimeConfig.public.github"
     />
   </div>
 </template>
